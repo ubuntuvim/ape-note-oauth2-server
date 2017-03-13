@@ -1,0 +1,27 @@
+{
+  "name": "ape-note-oauth2-server",
+  "version": "1.0.0",
+  "description": "Handling third party login services in ape-note.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubuntuvim/ape-note-oauth2-server.git"
+  },
+  "author": "ubuntuvim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ubuntuvim/ape-note-oauth2-server/issues"
+  },
+  "homepage": "https://github.com/ubuntuvim/ape-note-oauth2-server#readme",
+  "dependencies": {
+    "cors": "^2.8.1",
+    "express": "^4.15.2",
+    "glob": "^7.1.1",
+    "morgan": "^1.8.1",
+    "request": "^2.81.0",
+    "supervisor": "^0.12.0"
+  }
+}
