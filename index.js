@@ -30,7 +30,7 @@ app.all('*', function(req, res, next) {
 
 
 app.get('/oauth2/oschina', function(req, res) {
-  console.log('========== /oauth2/oschina ============');
+  console.log('========== 11111111111 /oauth2/oschina ============');
   var client_id = "v7z5CBAoqIVBClvNcXnj";
   var client_secret = "jPVjqJxvKNwyT28Lue1RNakQQCoDDkfK";
   var redirect_uri = "http://oauth2.ape-note.com/oauth2/oschina";
@@ -67,16 +67,26 @@ app.get('/oauth2/oschina', function(req, res) {
           }
       });
   } else {
-      res.send({
-          msg: "获取`code`失败: ",
-          code: 0
-      });
+    //   res.send({
+    //       msg: "获取`code`失败: ",
+    //       code: 0
+    //   });
+    //   重定向回到当前方法，获取code
+    var url = `https://www.oschina.net/action/oauth2/authorize?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}`;
+    request(url, function (error, response, body) {
+        console.log('================ 222222222222 ================');
+        console.log(error,response,body);
+
+    });
   }
 });  // get
+
 
 app.get('/test', function (req, res) {
   res.send('Hello World!')
 });
+
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port http://localhost:3000!')
