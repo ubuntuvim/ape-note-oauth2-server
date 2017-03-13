@@ -1,6 +1,6 @@
 
 var express = require('express');
-var requests = require('request');
+var request = require('request');
 var cors = require('cors');
 
 // var globSync   = require('glob').sync;
@@ -31,14 +31,15 @@ app.all('*', function(req, res, next) {
 
 app.get('/oauth2/oschina', function(req, res) {
   console.log('========== /oauth2/oschina ============');
-  var client_id = "vzCBAoqIVBClvNcXnj";
-  var client_secret = "lMUKYuuveVEbhIOolQexMnyzJDmfG";
-  var redirect_uri = "http://oauth2.ape-note.com/oauth/oschina";
+  var client_id = "v7z5CBAoqIVBClvNcXnj";
+  var client_secret = "jPVjqJxvKNwyT28Lue1RNakQQCoDDkfK";
+  var redirect_uri = "http://oauth2.ape-note.com/oauth2/oschina";
   // 得到code后获取access_token，
   var code = req.query.code;
   if (code) {  // 获取access_token
       var url = `https://www.oschina.net/action/openapi/token?redirect_uri=${redirect_uri}&client_id=${client_id}&client_secret=${client_secret}&grant_type=authorization_code&code=${code}&dataType=json`;
       request(url, function (error, response, body) {
+          console.log(error,response,body);
           if (!error && response.statusCode === 200) {
               var bodyObj = JSON.parse(body);
               var access_token = bodyObj.access_token;
@@ -67,7 +68,7 @@ app.get('/oauth2/oschina', function(req, res) {
       });
   } else {
       res.send({
-          msg: "获取`code`失败: " + error,
+          msg: "获取`code`失败: ",
           code: 0
       });
   }
